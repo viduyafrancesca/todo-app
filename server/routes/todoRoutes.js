@@ -12,7 +12,6 @@ router.get('/', async (req, res) => {
         const todos = username
             ? await Todo.find({ username })
             : await Todo.find();
-        // await Todo.find();
         res.json(todos);
     } catch (error) {
         res.status(500).json({ message: error.message });
@@ -21,7 +20,7 @@ router.get('/', async (req, res) => {
 
 // POST todo
 router.post('/', async (req, res) => {
-    const { task, username, priority = 'Low Priority' } = req.body; // Default priority if not provided
+    const { task, username, priority = 'Low Priority' } = req.body;
 
     if (!task || !username || !priority) {
         return res.status(400).json({ message: 'All fields are required.' });
@@ -48,8 +47,8 @@ router.patch('/:id', async (req, res) => {
     try {
         const updatedTodo = await Todo.findByIdAndUpdate(
             req.params.id,
-            { completed }, // Only update the completed field
-            { new: true } // Return the updated document
+            { completed },
+            { new: true } 
         );
 
         if (!updatedTodo) {

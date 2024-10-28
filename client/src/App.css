@@ -1,5 +1,3 @@
-/* App.css */
-
 /* General Body Style */
 body {
   display: flex;
@@ -45,8 +43,8 @@ body {
 
 /* Strikethrough for completed */
 .todo-item.completed {
-  text-decoration: line-through; /* Strikethrough effect */
-  opacity: 0.5; /* 50% opacity for completed todos */
+  text-decoration: line-through; 
+  opacity: 0.5; 
 }
 
 /* Checkbox and Button Spacing */
@@ -89,8 +87,8 @@ header {
 }
 
 .sign-out-button {
-  background-color: #A03232; /* Your primary color */
-  color: white; /* Text color */
+  background-color: #A03232; 
+  color: white; 
   border: none;
   padding: 10px 15px;
   cursor: pointer;
@@ -99,5 +97,5 @@ header {
 }
 
 .sign-out-button:hover {
-  background-color: #E3B23C; /* Change color on hover */
+  background-color: #E3B23C; 
 }
