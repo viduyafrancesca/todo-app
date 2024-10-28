@@ -1,0 +1,61 @@
+[
+    { "task": "Complete project report", "completed": false, "username": "user1", "priority": "High Priority" },
+    { "task": "Attend team meeting", "completed": true, "username": "user1", "priority": "Medium Priority" },
+    { "task": "Review pull requests", "completed": false, "username": "user1", "priority": "Low Priority" },
+    { "task": "Update documentation", "completed": false, "username": "user1", "priority": "High Priority" },
+    { "task": "Refactor codebase", "completed": false, "username": "user1", "priority": "Medium Priority" },
+
+    { "task": "Create presentation slides", "completed": false, "username": "user2", "priority": "High Priority" },
+    { "task": "Submit expense reports", "completed": true, "username": "user2", "priority": "Medium Priority" },
+    { "task": "Prepare for client call", "completed": false, "username": "user2", "priority": "Low Priority" },
+    { "task": "Conduct market research", "completed": false, "username": "user2", "priority": "High Priority" },
+    { "task": "Team lunch planning", "completed": false, "username": "user2", "priority": "Medium Priority" },
+
+    { "task": "Schedule one-on-one meetings", "completed": true, "username": "user3", "priority": "High Priority" },
+    { "task": "Organize team building event", "completed": false, "username": "user3", "priority": "Medium Priority" },
+    { "task": "Update project timeline", "completed": false, "username": "user3", "priority": "Low Priority" },
+    { "task": "Coordinate with HR", "completed": false, "username": "user3", "priority": "High Priority" },
+    { "task": "Draft proposal for new project", "completed": false, "username": "user3", "priority": "Medium Priority" },
+
+    { "task": "Finish writing article", "completed": false, "username": "user4", "priority": "High Priority" },
+    { "task": "Post on social media", "completed": true, "username": "user4", "priority": "Medium Priority" },
+    { "task": "Engage with community feedback", "completed": false, "username": "user4", "priority": "Low Priority" },
+    { "task": "Plan next month's content", "completed": false, "username": "user4", "priority": "High Priority" },
+    { "task": "Analyze website traffic", "completed": false, "username": "user4", "priority": "Medium Priority" },
+
+    { "task": "Set up email campaigns", "completed": false, "username": "user5", "priority": "High Priority" },
+    { "task": "Review analytics reports", "completed": true, "username": "user5", "priority": "Medium Priority" },
+    { "task": "Research competitors", "completed": false, "username": "user5", "priority": "Low Priority" },
+    { "task": "Brainstorm new strategies", "completed": false, "username": "user5", "priority": "High Priority" },
+    { "task": "Collaborate with design team", "completed": false, "username": "user5", "priority": "Medium Priority" },
+
+    { "task": "Refine project goals", "completed": false, "username": "user6", "priority": "High Priority" },
+    { "task": "Update progress in project tracker", "completed": true, "username": "user6", "priority": "Medium Priority" },
+    { "task": "Test new features", "completed": false, "username": "user6", "priority": "Low Priority" },
+    { "task": "Gather user feedback", "completed": false, "username": "user6", "priority": "High Priority" },
+    { "task": "Draft email to stakeholders", "completed": false, "username": "user6", "priority": "Medium Priority" },
+
+    { "task": "Review team assignments", "completed": true, "username": "user7", "priority": "High Priority" },
+    { "task": "Conduct performance reviews", "completed": false, "username": "user7", "priority": "Medium Priority" },
+    { "task": "Schedule training sessions", "completed": false, "username": "user7", "priority": "Low Priority" },
+    { "task": "Ensure compliance with regulations", "completed": false, "username": "user7", "priority": "High Priority" },
+    { "task": "Draft report for management", "completed": false, "username": "user7", "priority": "Medium Priority" },
+
+    { "task": "Launch new website", "completed": false, "username": "user8", "priority": "High Priority" },
+    { "task": "Create user guide", "completed": true, "username": "user8", "priority": "Medium Priority" },
+    { "task": "Organize testing phase", "completed": false, "username": "user8", "priority": "Low Priority" },
+    { "task": "Collect beta feedback", "completed": false, "username": "user8", "priority": "High Priority" },
+    { "task": "Prepare launch announcement", "completed": false, "username": "user8", "priority": "Medium Priority" },
+
+    { "task": "Plan marketing strategy", "completed": false, "username": "user9", "priority": "High Priority" },
+    { "task": "Create content calendar", "completed": true, "username": "user9", "priority": "Medium Priority" },
+    { "task": "Analyze audience insights", "completed": false, "username": "user9", "priority": "Low Priority" },
+    { "task": "Collaborate with influencers", "completed": false, "username": "user9", "priority": "High Priority" },
+    { "task": "Set KPIs for campaigns", "completed": false, "username": "user9", "priority": "Medium Priority" },
+
+    { "task": "Conduct user research", "completed": false, "username": "user10", "priority": "High Priority" },
+    { "task": "Develop user personas", "completed": true, "username": "user10", "priority": "Medium Priority" },
+    { "task": "Test usability", "completed": false, "username": "user10", "priority": "Low Priority" },
+    { "task": "Prepare presentation for stakeholders", "completed": false, "username": "user10", "priority": "High Priority" },
+    { "task": "Finalize project timeline", "completed": false, "username": "user10", "priority": "Medium Priority" }
+]

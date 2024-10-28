@@ -1,0 +1,42 @@
+[
+  {
+    "username": "user1",
+    "password": "$2b$10$7cy61NFPxcVbDqNhrziGYej3FJwiTDX2AuDWecchhaiU3hS92ENQ."
+  },
+  {
+    "username": "user2",
+    "password": "$2b$10$FvSZ30rwHSAokElbnb90leEkII1819T/C6SVKdrMEC93RTpmVAG3m"
+  },
+  {
+    "username": "user3",
+    "password": "$2b$10$pNUgggteb/QynrJtLMukmOaF4XIhCq2Bd1bV7ZBdxpSjOcLX31gLK"
+  },
+  {
+    "username": "user4",
+    "password": "$2b$10$WzcA7nbYsh1mqq.vZvT/quukkH2zNcRiVZgq5JpQ9/5T4yE0gD/Yq"
+  },
+  {
+    "username": "user5",
+    "password": "$2b$10$eXplpc8EnZUW2rYxHgZQV.jqdPxcG0/CnyeZDocQc5JxwMnMB0dga"
+  },
+  {
+    "username": "user6",
+    "password": "$2b$10$TPjt2TTxeTAt2R8O.GVqA.jmXPSVdg/bfHTK5CnQ0hYD133rqEUg."
+  },
+  {
+    "username": "user7",
+    "password": "$2b$10$maSm8ElwBe0eFA0izAFYGOh6tIg8P4PPgvEr0Cv/uoVDVjkWYk5ji"
+  },
+  {
+    "username": "user8",
+    "password": "$2b$10$rT7VDhHTxyh8hr/MsDLQGuaxPQfjSTvnEtsvVtnHBrkR8pR1PEe1O"
+  },
+  {
+    "username": "user9",
+    "password": "$2b$10$/ph0gIDvoQYInm/LCWm.9.3rIja39UHShnULEZskBRkGiZAL4kMge"
+  },
+  {
+    "username": "user10",
+    "password": "$2b$10$ZhtSXzzDdYo40wIgzDpDH.odmIrq5fE5lOT3SYL/tumL9T2Jo4PPK"
+  }
+]

@@ -1,0 +1,103 @@
+/* App.css */
+
+/* General Body Style */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; 
+  margin: 0; 
+  background-color: #f0f0f0; 
+}
+
+/* Main Todo Container */
+.todo-container {
+  background: white; 
+  padding: 20px; 
+  border-radius: 5px; 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+  width: 400px; 
+}
+
+/* Input Area for Adding Todos */
+.input-container {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center; 
+  margin-bottom: 20px; 
+}
+
+/* Todo List Styling */
+.todo-list {
+  display: flex;
+  flex-direction: column; 
+  margin-top: 10px; 
+}
+
+/* Individual Todo Item */
+.todo-item {
+  display: flex;
+  align-items: center; 
+  justify-content: space-between; 
+  padding: 10px; 
+  border-bottom: 1px solid #ddd; 
+}
+
+/* Strikethrough for completed */
+.todo-item.completed {
+  text-decoration: line-through; /* Strikethrough effect */
+  opacity: 0.5; /* 50% opacity for completed todos */
+}
+
+/* Checkbox and Button Spacing */
+.todo-item input[type="checkbox"] {
+  width: 20px;
+}
+
+.todo-item button {
+  margin-left: 10px; 
+}
+
+/* General Input and Button Styles */
+input[type="text"],
+select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  flex-grow: 1; 
+  margin-right: 10px; 
+}
+
+button {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Sign out */
+header {
+  display: flex;
+  justify-content: flex-start;
+  padding: 10px;
+}
+
+.sign-out-button {
+  background-color: #A03232; /* Your primary color */
+  color: white; /* Text color */
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.sign-out-button:hover {
+  background-color: #E3B23C; /* Change color on hover */
+}
