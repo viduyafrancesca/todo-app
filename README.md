@@ -1,2 +1,2 @@
 # todo-app
-Web application created using MERN stack, with Cypress E2E testing file included.
+Simple To-do web application created using MERN stack, with Cypress E2E testing file included.
