@@ -45,7 +45,7 @@ const Header = ({ setTodos }) => {
 
   return (
     <header>
-      <button onClick={handleSignOut} className="sign-out-button">
+      <button onClick={handleSignOut} className="sign-out-button" data-cy="signout-button">
         Sign Out
       </button>
     </header>

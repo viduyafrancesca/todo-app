@@ -31,8 +31,8 @@ const Register = () => {
     return (
         <div className="form-container" data-cy="registrationWindow">
             <h2>Register</h2>
-            {error && <p className="error-message">{error}</p>}
-            {successMessage && <p className="success-message">{successMessage}</p>}
+            {error && <p className="message">{error}</p>}
+            {successMessage && <p className="message">{successMessage}</p>}
             <form onSubmit={handleRegister}>
                 <input
                     type="text"

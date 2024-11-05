@@ -23,3 +23,10 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('getByData', (data) => {
+    if (!data) {
+        throw new Error('Data attribute is required');
+    }
+    return cy.get(`[data-cy="${data}"]`);
+});

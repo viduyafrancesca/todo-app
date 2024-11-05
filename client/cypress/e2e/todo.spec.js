@@ -15,25 +15,24 @@ describe('To-Do App E2E Tests', () => {
         });
 
         it('should navigate to registration page when Register link is clicked', () => {
-            // Click on the register link
-            cy.get('[data-cy=registrationForm]').click();
+            cy.getByData("registrationForm").should("exist").click()
 
             // Assert that the URL is now /register
-            cy.url().should('include', '/register');
+            cy.location("pathname").should("equal", "/register")
 
             // Check if the registration form loads
-            cy.get('[data-cy=registrationWindow]').should('be.visible');
+            cy.getByData("registrationWindow").should("be.visible")
         });
 
         it('should navigate to login page when Login link is clicked', () => {
             // Click on the login link
-            cy.get('[data-cy=loginForm]').click();
+            cy.getByData("loginForm").should("exist").click();
 
             // Assert that the URL is now /login
             cy.url().should('include', '/login');
 
             // Check if the login form loads
-            cy.get('[data-cy=loginWindow]').should('be.visible');
+            cy.getByData("loginWindow").should('be.visible');
         });
     });
 
@@ -41,17 +40,17 @@ describe('To-Do App E2E Tests', () => {
     describe('User Registration Flow', () => {
         it('should register a new user successfully', () => {
             cy.visit('/register');
-            cy.get('[data-cy=registerUsername]').type('test-user');
-            cy.get('[data-cy=registerPassword]').type('test-password');
-            cy.get('[data-cy=registerButton]').click();
+            cy.getByData("registerUsername").type('test-user');
+            cy.getByData("registerPassword").type('test-password');
+            cy.getByData("registerButton").should("exist").click();
             cy.contains('Registration successful! You can now log in.').should('be.visible');
         });
 
         it('should show error when username is blank', () => {
             cy.visit('/register');
-            cy.get('[data-cy=registerPassword]').type('test-password');
-            cy.get('[data-cy=registerButton]').click();
-            cy.get('[data-cy=registerUsername]')
+            cy.getByData("registerPassword").type('test-password');
+            cy.getByData("registerButton").should("exist").click();
+            cy.getByData("registerUsername")
                 .then(($input) => {
                     expect($input[0].validationMessage).to.eq('Please fill out this field.');
                 });
@@ -59,9 +58,9 @@ describe('To-Do App E2E Tests', () => {
 
         it('should show error when password is blank', () => {
             cy.visit('/register');
-            cy.get('[data-cy=registerUsername]').type('test-user');
-            cy.get('[data-cy=registerButton]').click();
-            cy.get('[data-cy=registerPassword')
+            cy.getByData("registerUsername").type('test-user');
+            cy.getByData("registerButton").should("exist").click();
+            cy.getByData("registerPassword")
                 .then(($input) => {
                     expect($input[0].validationMessage).to.eq('Please fill out this field.');
                 });
@@ -69,9 +68,9 @@ describe('To-Do App E2E Tests', () => {
 
         it('should show error when registering with an existing username', () => {
             cy.visit('/register');
-            cy.get('[data-cy=registerUsername]').type('test-user');
-            cy.get('[data-cy=registerPassword]').type('test-password');
-            cy.get('[data-cy=registerButton]').click();
+            cy.getByData("registerUsername").type('test-user');
+            cy.getByData("registerPassword").type('test-password');
+            cy.getByData("registerButton").should("exist").click();
             cy.contains('User already exists!').should('be.visible');
         });
     });
@@ -80,25 +79,25 @@ describe('To-Do App E2E Tests', () => {
     describe('Login Flow', () => {
         it('should show error with incorrect password', () => {
             cy.visit('/login');
-            cy.get('[data-cy=loginUsername]').type('test-user');
-            cy.get('[data-cy=loginPassword]').type('wrong-password');
-            cy.get('[data-cy=loginButton]').click();
+            cy.getByData("loginUsername").type('test-user');
+            cy.getByData("loginPassword").type('wrong-password');
+            cy.getByData("loginButton").should("exist").click();
             cy.contains('Invalid credentials').should('be.visible');
         });
 
         it('should show error with incorrect username', () => {
             cy.visit('/login');
-            cy.get('[data-cy=loginUsername]').type('wrong-username');
-            cy.get('[data-cy=loginPassword]').type('test-password');
-            cy.get('[data-cy=loginButton]').click();
+            cy.getByData("loginUsername").type('wrong-username');
+            cy.getByData("loginPassword").type('test-password');
+            cy.getByData("loginButton").should("exist").click();
             cy.contains('Invalid credentials').should('be.visible');
         });
 
         it('should show error when username is blank', () => {
             cy.visit('/login');
-            cy.get('[data-cy=loginPassword]').type('test-password');
-            cy.get('[data-cy=loginButton]').click();
-            cy.get('[data-cy=loginUsername]')
+            cy.getByData("loginPassword").type('test-password');
+            cy.getByData("loginButton").should("exist").click();
+            cy.getByData("loginUsername")
                 .then(($input) => {
                     expect($input[0].validationMessage).to.eq('Please fill out this field.');
                 });
@@ -106,9 +105,9 @@ describe('To-Do App E2E Tests', () => {
 
         it('should show error when password is blank', () => {
             cy.visit('/login');
-            cy.get('[data-cy=loginUsername]').type('test-user');
-            cy.get('[data-cy=loginButton]').click();
-            cy.get('[data-cy=loginPassword]')
+            cy.getByData("loginUsername").type('test-user');
+            cy.getByData("loginButton").should("exist").click();
+            cy.getByData("loginPassword")
                 .then(($input) => {
                     expect($input[0].validationMessage).to.eq('Please fill out this field.');
                 });
@@ -116,9 +115,9 @@ describe('To-Do App E2E Tests', () => {
 
         it('should login successfully with valid credentials', () => {
             cy.visit('/login');
-            cy.get('[data-cy=loginUsername]').type('test-user');
-            cy.get('[data-cy=loginPassword]').type('test-password');
-            cy.get('[data-cy=loginButton]').click();
+            cy.getByData("loginUsername").type('test-user');
+            cy.getByData("loginPassword").type('test-password');
+            cy.getByData("loginButton").should("exist").click();
             cy.url().should('include', '/todos'); // Assumes redirection to the todos page
         });
     });
@@ -128,9 +127,9 @@ describe('To-Do App E2E Tests', () => {
         beforeEach(() => {
             // Login before checking tasks
             cy.visit('/login');
-            cy.get('[data-cy=loginUsername]').type('test-user');
-            cy.get('[data-cy=loginPassword]').type('test-password');
-            cy.get('[data-cy=loginButton]').click();
+            cy.getByData("loginUsername").type('test-user');
+            cy.getByData("loginPassword").type('test-password');
+            cy.getByData("loginButton").should("exist").click();
         });
 
         it('should display tasks created by the logged-in user, expected 0 since user is new', () => {
@@ -143,30 +142,30 @@ describe('To-Do App E2E Tests', () => {
     describe('Task Creation', () => {
         beforeEach(() => {
             cy.visit('/login');
-            cy.get('[data-cy=loginUsername]').type('test-user');
-            cy.get('[data-cy=loginPassword]').type('test-password');
-            cy.get('[data-cy=loginButton]').click();
+            cy.getByData("loginUsername").type('test-user');
+            cy.getByData("loginPassword").type('test-password');
+            cy.getByData("loginButton").should("exist").click();
         });
 
         it('should add a task with Low Priority', () => {
-            cy.get('[data-cy=taskInput]').type('test-lowprio-task');
-            cy.get('[data-cy=addTaskButton]').click();
+            cy.getByData("taskInput").type('test-lowprio-task');
+            cy.getByData("addTaskButton").should("exist").click();
             cy.contains('test-lowprio-task').should('be.visible');
             cy.contains('Low Priority').should('be.visible');
         });
 
         it('should add a task with Medium Priority', () => {
-            cy.get('[data-cy=taskInput]').type('test-medprio-task');
-            cy.get('[data-cy=priority]').select('Medium Priority');
-            cy.get('[data-cy=addTaskButton]').click();
+            cy.getByData("taskInput").type('test-medprio-task');
+            cy.getByData("priority").select('Medium Priority');
+            cy.getByData("addTaskButton").should("exist").click();
             cy.contains('test-medprio-task').should('be.visible');
             cy.contains('Medium Priority').should('be.visible');
         });
 
         it('should add a task with High Priority', () => {
-            cy.get('[data-cy=taskInput]').type('test-hiprio-task');
-            cy.get('[data-cy=priority]').select('High Priority');
-            cy.get('[data-cy=addTaskButton]').click();
+            cy.getByData("taskInput").type('test-hiprio-task');
+            cy.getByData("priority").select('High Priority');
+            cy.getByData("addTaskButton").should("exist").click();
             cy.contains('test-hiprio-task').should('be.visible');
             cy.contains('High Priority').should('be.visible');
         });
@@ -176,14 +175,14 @@ describe('To-Do App E2E Tests', () => {
     describe('Mark Task as Complete', () => {
         beforeEach(() => {
             cy.visit('/login');
-            cy.get('[data-cy=loginUsername]').type('test-user');
-            cy.get('[data-cy=loginPassword]').type('test-password');
-            cy.get('[data-cy=loginButton]').click();
+            cy.getByData("loginUsername").type('test-user');
+            cy.getByData("loginPassword").type('test-password');
+            cy.getByData("loginButton").should("exist").click();
         });
 
         it('should mark a task as complete', () => {
             cy.contains('test-lowprio-task').parent().find('[data-cy=completed]').click();
-            cy.get('[data-cy=taskText]').contains('test-lowprio-task')
+            cy.getByData("taskText").contains('test-lowprio-task')
                 .should('have.css', 'text-decoration')
                 .and((textDecoration) => {
                     expect(textDecoration).to.include('line-through');
@@ -192,7 +191,7 @@ describe('To-Do App E2E Tests', () => {
 
         // it('should keep task marked as complete after refreshing the page', () => {
         //     cy.reload();
-        //     cy.get('[data-cy=taskText]').contains('test-lowprio-task')
+        //     cy.getByData("taskText").contains('test-lowprio-task')
         //         .should('have.css', 'text-decoration')
         //         .and((textDecoration) => {
         //             expect(textDecoration).to.include('line-through');
@@ -204,19 +203,19 @@ describe('To-Do App E2E Tests', () => {
     describe('Delete a Task', () => {
         beforeEach(() => {
             cy.visit('/login');
-            cy.get('[data-cy=loginUsername]').type('test-user');
-            cy.get('[data-cy=loginPassword]').type('test-password');
-            cy.get('[data-cy=loginButton]').click();
+            cy.getByData("loginUsername").type('test-user');
+            cy.getByData("loginPassword").type('test-password');
+            cy.getByData("loginButton").should("exist").click();
         });
 
         it('should delete a task', () => {
             cy.contains('test-lowprio-task').parent().find('[data-cy=deleteButton]').click();
-            cy.get('[data-cy=taskText]').contains('test-lowprio-task').should('not.exist');
+            cy.getByData("taskText").contains('test-lowprio-task').should('not.exist');
         });
 
         // it('should confirm task deletion after refreshing the page', () => {
         //     cy.reload();
-        //     cy.get('[data-cy=taskText]').contains('test-lowprio-task').should('not.exist');
+        //     cy.getByData("taskText").contains('test-lowprio-task').should('not.exist');
         // });
     });
 });
