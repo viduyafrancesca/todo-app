@@ -62,6 +62,16 @@ const TodoList = ({ todos, setTodos }) => {
         }
     };
 
+    const priorities = {
+        'High Priority': [],
+        'Medium Priority': [],
+        'Low Priority': []
+    };
+
+    todos.forEach(todo => {
+        priorities[todo.priority].push(todo);
+    });
+
     return (
         <div className="todo-container">
             <div className="input-container">
@@ -79,22 +89,30 @@ const TodoList = ({ todos, setTodos }) => {
                 </select>
                 <button onClick={addTodo} data-cy="addTaskButton">Add</button>
             </div>
-            <ul className="todo-list" data-cy="taskList">
-                {todos.map(todo => (
-                    <li key={todo._id} className={`todo-item ${todo.completed ? 'completed' : ''}`} data-cy="taskItem">
-                        <input
-                            type="checkbox"
-                            checked={todo.completed}
-                            onChange={() => toggleCompletion(todo._id)}
-                            data-cy="completed"
-                        />
-                        <span style={{ textDecoration: todo.completed ? 'line-through' : 'none', opacity: todo.completed ? 0.5 : 1 }} data-cy="taskText">
-                            {todo.task} <span>{todo.priority}</span>
-                        </span>
-                        <button onClick={() => deleteTodo(todo._id)} data-cy="deleteButton">Delete</button>
-                    </li>
+
+            <div className="todo-list-container">
+                {Object.keys(priorities).map((priority) => (
+                    <div key={priority} className={`todo-card ${priority.replace(" ", "-").toLowerCase()}`}>
+                        <h2>{priority}</h2>
+                        <ul className="todo-list" data-cy="taskList">
+                            {priorities[priority].map(todo => (
+                                <li key={todo._id} className={`todo-item ${todo.completed ? 'completed' : ''}`}>
+                                    <input
+                                        type="checkbox"
+                                        checked={todo.completed}
+                                        onChange={() => toggleCompletion(todo._id)}
+                                        data-cy="completed"
+                                    />
+                                    <span style={{ textDecoration: todo.completed ? 'line-through' : 'none', opacity: todo.completed ? 0.5 : 1 }} data-cy="taskText">
+                                        {todo.task}
+                                    </span>
+                                    <button onClick={() => deleteTodo(todo._id)} data-cy="deleteButton">Delete</button>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                 ))}
-            </ul>
+            </div>
         </div>
     );
 };
