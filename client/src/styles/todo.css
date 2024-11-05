@@ -1,0 +1,79 @@
+/* Main Todo Container */
+.todo-container {
+    background: white; 
+    padding: 20px; 
+    margin: 1vh;
+    border-radius: 5px; 
+    box-shadow: 0 4px 10px #ccc;
+    width: 400px; 
+    max-width: 600px;
+  }
+
+/* Input Area for Adding Todos */
+.input-container {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    margin-bottom: 20px; 
+  }
+  
+  /* Todo List Styling */
+  .todo-list {
+    display: flex;
+    flex-direction: column; 
+    margin-top: 10px; 
+  }
+  
+  /* Individual Todo Item */
+  .todo-item {
+    display: flex;
+    align-items: center; 
+    justify-content: space-between; 
+    padding: 10px; 
+    border-bottom: 1px solid #ddd; 
+  }
+
+
+
+ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  li {
+    align-items: start;
+  }
+  
+  .todo-item.completed {
+    text-decoration: line-through; 
+    opacity: 0.5; 
+  }
+  
+  .todo-item input[type="checkbox"] {
+    width: 20px;
+  }
+  
+  .input-container input, select{
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    flex-grow: 1;
+    margin-right: 10px;
+    width: 70%;
+  
+  }
+  
+  .input-container button, .todo-list button {
+   
+    padding: 10px;
+    background-color: #004C9E;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 10px 15px; 
+  }
+  
+  .input-container button:hover, .todo-list button:hover {
+    background-color: #003B7A;
+  } 

@@ -1,7 +1,7 @@
 // src/components/TodoList.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import '../App.css';
+import '../styles/todo.css';
 import { useUser } from '../context/UserContext';
 
 const TodoList = ({ todos, setTodos }) => {

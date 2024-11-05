@@ -6,7 +6,7 @@ import Login from './components/Login';
 import TodoList from './components/TodoList';
 import Home from './components/Home'; 
 import { UserProvider, useUser } from './context/UserContext'; 
-import './App.css';
+// import './App.css';
 
 const App = () => {
   const [todos, setTodos] = useState([]); // Lifted state here
