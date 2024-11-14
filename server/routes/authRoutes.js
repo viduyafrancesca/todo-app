@@ -26,7 +26,7 @@ router.post('/register', async (req, res) => {
   }
 });
 
-// Login route
+// Login route using HttpOnly cookie
 router.post('/login', async (req, res) => {
   const { username, password } = req.body;
 
@@ -44,8 +44,15 @@ router.post('/login', async (req, res) => {
     }
 
     // Create and return JWT
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
-    res.json({ token });
+    const token = jwt.sign({ id: user._id, username: user.username }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    res.cookie('auth_token', token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'Strict',
+      maxAge: 3600000,
+    });
+    res.json({ message: 'Login Successful!' });
+
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

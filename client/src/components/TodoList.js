@@ -10,22 +10,30 @@ const TodoList = ({ todos, setTodos }) => {
     const [priority, setPriority] = useState('Low Priority');
 
     useEffect(() => {
-        const fetchTodos = async () => {
-            console.log('Fetching todos for user:', username);
-            if (username) {
-                try {
-                    const response = await axios.get(`http://localhost:5001/todos?username=${username}`);
-                    setTodos(response.data);
-                    console.log('Fetched todos:', response.data);
-                } catch (error) {
-                    console.error('Error fetching todos:', error);
+        const storedTodos = JSON.parse(localStorage.getItem('todos'));
+
+        if (storedTodos && storedTodos.length > 0) { //Get data from storedTodos if exists, otherwise load fetchTodos
+            setTodos(storedTodos);
+        } else {
+            const fetchTodos = async () => {
+
+                if (username) {
+                    try {
+                        const response = await axios.get('http://localhost:5001/todos', { withCredentials: true });
+                        setTodos(response.data);
+                        localStorage.setItem('todos', JSON.stringify(response.data)); // Save to localStorage
+
+                    } catch (error) {
+                        console.error('Error fetching todos:', error.response?.data || error.message);
+                    }
+                } else {
+                    console.log('No user signed in, clearing todos.');
+                    setTodos([]); // Clear todos when signed out
+                    localStorage.removeItem('todos'); // Clear localStorage when logged out
                 }
-            } else {
-                console.log('No user signed in, clearing todos.');
-                setTodos([]); // Clear todos when signed out
-            }
-        };
-        fetchTodos();
+            };
+            fetchTodos();
+        }
     }, [username, setTodos]);
 
 
@@ -34,8 +42,10 @@ const TodoList = ({ todos, setTodos }) => {
         const todoData = { task: taskInput, username, priority };
 
         try {
-            const response = await axios.post('http://localhost:5001/todos', todoData);
-            setTodos([...todos, response.data]);
+            const response = await axios.post('http://localhost:5001/todos', todoData, { withCredentials: true });
+            const updatedTodos = [...todos, response.data];
+            setTodos(updatedTodos);
+            localStorage.setItem('todos', JSON.stringify(updatedTodos)); // Save to localStorage
             setTaskInput('');
             setPriority('Low Priority');
         } catch (error) {
@@ -45,8 +55,11 @@ const TodoList = ({ todos, setTodos }) => {
 
     const deleteTodo = async (id) => {
         try {
-            await axios.delete(`http://localhost:5001/todos/${id}`);
-            setTodos(todos.filter(todo => todo._id !== id));
+            await axios.delete(`http://localhost:5001/todos/${id}`, { withCredentials: true });
+            const updatedTodos = todos.filter(todo => todo._id !== id);
+            setTodos(updatedTodos);
+            localStorage.setItem('todos', JSON.stringify(updatedTodos)); // Update localStorage
+
         } catch (error) {
             console.error('Error deleting todo:', error);
         }
@@ -55,8 +68,11 @@ const TodoList = ({ todos, setTodos }) => {
     const toggleCompletion = async (id) => {
         const todoToUpdate = todos.find(todo => todo._id === id);
         try {
-            await axios.patch(`http://localhost:5001/todos/${id}`, { completed: !todoToUpdate.completed });
-            setTodos(todos.map(todo => todo._id === id ? { ...todo, completed: !todo.completed } : todo));
+            await axios.patch(`http://localhost:5001/todos/${id}`, { completed: !todoToUpdate.completed }, { withCredentials: true });
+            const updatedTodos = todos.map(todo => todo._id === id ? { ...todo, completed: !todo.completed } : todo);
+            setTodos(updatedTodos);
+            localStorage.setItem('todos', JSON.stringify(updatedTodos)); // Update localStorage
+
         } catch (error) {
             console.error('Error updating todo:', error);
         }

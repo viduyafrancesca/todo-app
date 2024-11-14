@@ -12,6 +12,7 @@ export const UserProvider = ({ children }) => {
 
     const logout = () => {
         setUsername(''); // Clear the username on logout
+        localStorage.removeItem('todos'); // Clear todos on logout
     };
 
     return (

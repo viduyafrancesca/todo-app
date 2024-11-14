@@ -1,17 +1,15 @@
 // routes/todoRoutes.js
 const express = require('express');
 const Todo = require('../models/Todo');
+const authenticate = require('../middleware/authMiddleware'); 
 
 const router = express.Router();
 
 // GET todos
-router.get('/', async (req, res) => {
-    const { username } = req.query;
-
+router.get('/', authenticate, async (req, res) => {
+    const username = req.user.username;
     try {
-        const todos = username
-            ? await Todo.find({ username })
-            : await Todo.find();
+        const todos = await Todo.find({ username: username });
         res.json(todos);
     } catch (error) {
         res.status(500).json({ message: error.message });
@@ -19,10 +17,11 @@ router.get('/', async (req, res) => {
 });
 
 // POST todo
-router.post('/', async (req, res) => {
-    const { task, username, priority = 'Low Priority' } = req.body;
+router.post('/', authenticate, async (req, res) => {
+    const { task, priority = 'Low Priority' } = req.body;
+    const username = req.user.username;
 
-    if (!task || !username || !priority) {
+    if (!task || !priority) {
         return res.status(400).json({ message: 'All fields are required.' });
     }
 
@@ -41,7 +40,7 @@ router.post('/', async (req, res) => {
 });
 
 // PATCH todo (update completion status)
-router.patch('/:id', async (req, res) => {
+router.patch('/:id', authenticate, async (req, res) => {
     const { completed } = req.body;
 
     try {
@@ -62,9 +61,9 @@ router.patch('/:id', async (req, res) => {
 });
 
 // DELETE todo
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', authenticate, async (req, res) => {
     try {
-        const result = await Todo.findByIdAndDelete(req.params.id);
+        const result = await Todo.findByIdAndDelete({ _id: req.params.id });
         if (!result) return res.status(404).json({ message: 'Todo not found' });
         res.json({ message: 'Todo deleted' });
     } catch (error) {

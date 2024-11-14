@@ -15,10 +15,10 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5001/auth/login', { username, password });
-      setError(''); 
+      const response = await axios.post('http://localhost:5001/auth/login', { username, password }, { withCredentials: true });
+      setError('');
       login(username);
-      navigate('/todos'); 
+      navigate('/todos');
     } catch (error) {
       setError(error.response?.data?.message || 'An error occurred. Please try again.');
     }
